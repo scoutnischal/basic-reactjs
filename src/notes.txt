@@ -1,0 +1,216 @@
+install any package in react:
+-> npm install package_name
+
+important of two file:
+->only code in App.js file
+-> index.js and App.js
+
+create new files:
+->src/create New_file.js
+->file name is always in Capital Letter
+
+alternative of npm is: yarn
+
+Check react version from project:
+->goto package.json file
+->Take a look under the dependencies section. 
+->It should list all of the dependencies of your project and 
+one of those should be React.
+
+file and folders:
+->main file is package.json(file_name, version, all command and installing package_name)as app details
+->package-lock.json(all package history, version control, resolved as destination source,integrity as 
+hash-code) as node-modules tree structure details and also carry package details 
+->.gitignore : ignore file and folder to committe in git 
+->In src folder:
+    -App.css for styling the html code
+    -App.js for actual codes
+    -App.test.js for write a unit test code(advance js level, to each to found bug)
+    -index.css for styling file
+    -index.js as a entry point of react js in website
+    -logo.svg as a image
+    -reportWebVitals.js for reporting the performance details 
+    -setupTests.js for all test case of all main file like App.js
+->In public folder: for html kind of details not reactjs related
+    -favicon.ico for project icon
+    -index.html for entry point in web as root point, when all the react load in root id 
+    -logo192.png : normal png images
+    -mainfest as a meta file (use for display color, icon image css) for progressive app
+    -robots.txt :for automatically generated with create-react-app in the public folder
+->In node_modules folder:
+    -All dependencies are available for all react package and js 
+
+->we can create a folder as build_name:
+    -use for 
+
+==================================================
+**what is the important file in react?
+->package.json file
+->main file is package.json(file_name, version, all command and installing package_name)as app details
+==================================================
+**why node_modules is not push while we push the file in git?
+->because node_modules folder is heavy weighted folder
+==================================================
+**And how can to achieved the node_modules folder by another developer?
+->using 'nmp intall' (its all the install dependencies of package.json and also internal dependencies,
+if already install npm just check the node_modules and install required dependencies)
+->Or using 'npm i react-validation'
+->if developer needs to change the version of react:
+->copy the version and paste it package.json file inside the dependencies
+->then cmd run npm install
+->if we need delete the version same as delete the version from dependencies then run npm install in cmd
+
+//custom command:
+->we can change the command as custom command,
+->simple change 'start' to 'nischal' inside the Debug->script in package.json file
+-> used 'npm run nischal' for react project run 
+===============================================
+Components : mean a part or element of large whole like a part of machine or vehicle(wheel)
+In react :
+->a piece of code that can reuse like function, but more powerful than function->because its have
+life-cycle,own state,different way to assinged the parameter,own html eg.<header> & <footer>,<sidebar>
+->it can be use for same page or different pages
+
+**what are the types of components in react js?:not specific
+-> usually function :eg Apple.js file <Apple/> or <Apple></Apple>
+->Class Component based
+->High order Component
+->Pure Component
+->Controlled Component
+->Uncontrolled Component
+
+**can we make Component inside the Component?(Y/N)
+->Yes.
+function Apple(){
+    function AppleDemo(){
+        return (<div>Demo of Component inside Component</div>);
+    }
+    return(
+        <div className="App">
+            <h1>This is Apple Page</h1>
+            <AppleDemo />
+        </div>
+    );
+}
+
+**can we used react and angular in one project?
+=>We will build three modules,i.e., main-app in React, sub-app in React and a sub-app in Angular.
+We can use create-react-app for creating main-app, 
+sub-app for React and Angular CLI for creating sub-app in Angular.
+->react is a library we can used any where(angular,view)
+
+#JSX(JavaScript xml):
+->help to wirte html tags inside the js in react
+->we can used the js in between html tag eg: <div>{40+60}</div> normal opration
+->without jsx more complex
+->JSX allows us to write HTML elements in JavaScript
+->and place them in the DOM without any createElement() and/or appendChild() methods. 
+
+**can we use JSX without react?
+=>JSX is not a requirement for using React
+
+#Click Event and Function:
+->how to make click Event :simple click event ie button
+->call function in the button click :simple create a function in parent function
+<button onClick={click_button}>Click Me</button> 
+{/*  alternative */}
+<button onClick={()=>click_button()}>Click Me</button>
+<button onClick={()=>alert("This is directly called")}>Call Me</button>
+->variable in function Component : create a variable in parent function used in child
+
+#State in Functional Component:
+->we can use state with class and fucntional components
+->basically, state is an object, we can store data inside the state
+->we can only used state than variable because it can update the data/component 
+->we can use the one component's state to another component
+->React components has a built-in state object which is private to a component.
+-> State can not be accessed from outside of the class.
+import React from 'react';
+import {useState} from 'react';
+fucntion App(){
+    const [data,setData]=useState("nischal");
+    return(
+        <h1>{data}</h1>
+    );
+}
+
+#State in Class Component:
+->eg: in User.js
+**can we use useState inside class component??
+->The error "React hook 'useState' cannot be called in a class component" occurs 
+->when we try to use the useState hook in a class component
+
+#Props with Functional Component:
+->It means full properties 
+->Similar to as function, we can pass the parameter in props 
+->we can also used parameter function as props i.e. lifting up State
+->code : Sutdent .js
+function Student(props){
+    console.warn(props);
+    return(
+        <div style={{backgroundColor: "green"}}>
+            <h1>Student Component</h1>
+            <h1>Hello {props.name}</h1>
+            {/* <h1>Email : {props.email}</h1>
+            <h3>Address : {props.other.address}, Mobile : {props.other.mobile}</h3> */}
+        </div>
+    );
+}
+export default Student;
+
+App.js:
+import { useState } from 'react';
+import Student from "./Student";
+  const [name,setName] = useState("nischal");
+App(){
+
+  function apple(){
+    alert("Hi Nischal");
+  }
+  return (
+    <div className="App">
+    {/* we can pass the data ie. Nischal through the props aslo pass the dynamic data */}
+    {/* <Student name ={"Nischal"} email = {"nischal@gmail.com"} other = {{address:"ktm", mobile:"123"}}/> */}
+    {/* <Student name = {"Hari"} email = {"hari@gmail.com"} other = {{address:"Maru", mobile:"645"}}/>
+    <Student name = {"Rita"} email = {"rita@gmail.com"} other = {{address:"Ason", mobile:"897"}}/> */}
+    <Student name ={name}/>
+    <button onClick={()=>{setName("Ram")}}>Update Name</button>
+    );
+}
+
+#Props with Class Component:       
+->eg. Studnts.js and Apple.js         
+** can we change the props when we get the props in component  ??
+->No, we can only change the props pass ie.only parent component either class or functional component 
+**can we pass the html as a props in react??
+->yes,  <Students name={["This is ", <strong> not </strong>,  "working."]}/>  
+
+# Get Input box value:
+->exmaple in apple.js->FormDemo():
+** can we get data from checkBox?
+
+#Hide and Show the Element :
+->eg.:Apple.js ->HideShowDemo();
+
+#Basic Form Handling
+->Make HTML Form,add some field data, submite and control form
+->eg : Apple.js file->FormHandle();  
+** disable any field in html tags with button and without button over the state
+
+#Conditional rendering| if else condition and else if :
+->Make component, UseState
+->Not Recommended way for condition
+->correct way condition that means "condition ? <expression if true> : <expression if false>"
+->if else if condition "condition==1?<expression if true>
+                    :condition==2? <expression if true>
+                    :<expression if false>"
+
+
+#Basic Form Validation in React:
+->Make Component, Make html form, define State and apply Validation
+->eg: Apple.js file
+
+#Pass Funtion as Props:
+->eg:CondiontionDemo.js file (as a child) and Student.js(as a Parent)
+
+**can we call the function inside the super child in react
